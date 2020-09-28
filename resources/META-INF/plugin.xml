@@ -1,0 +1,43 @@
+<idea-plugin>
+  <id>com.your.company.unique.plugin.id</id>
+  <name>BB DSL </name>
+  <version>1.0</version>
+  <vendor email="arthur@araizen.com" url="http://www.yourcompany.com">Arthur Kamau</vendor>
+
+  <description><![CDATA[
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+  </change-notes>
+
+  <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- Product and plugin compatibility requirements -->
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.modules.java</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+        <fileType name="BB File" implementationClass="org.BB.language.BBFileType" fieldName="INSTANCE"
+              language="bb-lang" />
+
+    <lang.parserDefinition language="bb-lang" implementationClass="org.BB.language.BBParserDefinition"/>
+    <lang.syntaxHighlighterFactory language="bb-lang"
+                                   implementationClass="org.BB.language.BBSyntaxHighlighterFactory"/>
+    <colorSettingsPage implementation="org.BB.language.BBColorSettingsPage"/>
+
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+</idea-plugin>

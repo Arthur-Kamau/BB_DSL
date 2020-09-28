@@ -1,0 +1,158 @@
+// Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+{
+  parserClass="org.BB.language.parser.BBParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="BB"
+  psiImplClassSuffix="Impl"
+  psiPackage="org.BB.language.psi"
+  psiImplPackage="org.BB.language.psi.impl"
+//import org.BB.language.psi.BBTokenType;
+  elementTypeHolderClass="org.BB.language.BBTypes"
+//  elementTypeClass="org.BB.language.psi.BBElementType"
+//  tokenTypeClass="org.BB.language.psi.BBTokenType"
+
+  psiImplUtilClass="org.BB.language.psi.impl.BBPsiImplUtil"
+
+
+  tokens = [
+// reserved words
+  ASSERT="assert"
+  COMMENT="comment"
+  BREAK="break"
+  CASE="case"
+  INTEGER_LITERAL="INTEGER_LITERAL"
+  LONG_LITERAL="LONG_LITERAL"
+  CATCH="catch"
+  CLASS="class"
+  CONST="const"
+  FUNCTION="function"
+  OVERRIDE="overide"
+  PACKAGE="package"
+  CONTINUE="continue"
+  DEFAULT="default"
+  DO="do"
+  ELSE="else"
+  ENUM="enum"
+  EXTENDS="extends"
+  FALSE="false"
+  FINAL="final"
+  FINALLY="finally"
+  FOR="for"
+  IF="if"
+  IN="in"
+  IS="is"
+  NEW="new"
+  NULL="null"
+  RETHROW="rethrow"
+  RETURN="return"
+  SUPER="super"
+  SWITCH="switch"
+  WHEN="when"
+  INT="int"
+  STRING="string"
+  DOUBLE="double"
+  ALIAS="alias"
+  THIS="this"
+  THROW="throw"
+  TRUE="true"
+  TRY="try"
+  VARIABLE="var"
+  VALUE="val"
+  LET="let"
+  MUTABLE="mut"
+
+
+  IMPLEMENTS="implements"
+  IMPORT="import"
+  LIBRARY="library"
+  MIXIN="mixin"
+  STRUCT="struct"
+  OPERATOR="operator"
+  PART="part"
+  SET="set"
+  STATIC="static"
+  TYPEDEF="typedef"
+  TYPE_KW="type"
+  WHERE="where"
+
+// other
+  USE="use"
+  ON="on"
+  OF="of"
+  NATIVE="native"
+  SHOW="show"
+  HIDE="hide"
+  SYNC="sync"
+  ASYNC="async"
+  AWAIT="await"
+  YIELD="yield"
+  LATE="late"
+  REQUIRED="required"
+
+  OPEN_BRACKETS="{"
+  CLOSE_BRACKETS="}"
+  LSQUAREBRACKET="["
+  RSQUAREBRACKET="]"
+  OPEN_BRACE="("
+  CLOSE_BRACE=")"
+  OPEN_QUOTE="\""
+  CLOSE_QUOTE="\""
+  SEMI_COLON=";"
+  MINUS="-"
+  MINUS_EQ="-="
+  MINUS_MINUS="--"
+  ADD="+"
+  PLUS_PLUS="++"
+  PLUS_EQ="+="
+  ASSIGN="="
+  NOT="!"
+
+
+  KEY="key"
+  VALUE="value"
+
+
+  EQUAL="=="
+  NEQ="!="
+  DOT="."
+  COLONCOLON="::"
+  DOT_DOT=".."
+  QUEST_DOT_DOT="?.."
+  DOT_DOT_DOT="..."
+  DOT_DOT_DOT_QUEST="...?"
+  COMMA=","
+  COLON=":"
+  SEMI_COLON=";"
+  GREATER_THAN=">"
+  LESS_THAN="<"
+  ARROW="->"
+  DIVIDE="/"
+  MULTIPLY="*"
+  AND="&"
+
+
+  AT="@"
+  LOOP="loop"
+  UNDERSCORE="_"
+  DOLLAR="$"
+  ]
+}
+BBFile ::= Definition*
+
+Definition ::= FunctionDefinition
+
+FunctionDefinition ::= function IDENTIFIER '(' ')' (returns Type)? '{' FunctionBody '}'
+
+FunctionBody ::= Statement*
+
+Statement ::= VariableDefinition | AssignmentStatement | FunctionInvocation
+
+VariableDefinition ::= Type IDENTIFIER (';' | ('=' FunctionInvocation)?)
+
+Type ::= int | string | char
+
+AssignmentStatement ::= IDENTIFIER '=' FunctionInvocation
+
+FunctionInvocation ::= IDENTIFIER '(' ')' ';'
