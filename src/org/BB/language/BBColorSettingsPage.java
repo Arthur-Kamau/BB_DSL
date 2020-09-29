@@ -103,7 +103,7 @@ public class BBColorSettingsPage implements ColorSettingsPage {
   @NotNull
   @Override
   public String getDisplayName() {
-    return "Stratos";
+    return "BB";
   }
 
 }
