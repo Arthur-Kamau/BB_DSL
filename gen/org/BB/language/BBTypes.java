@@ -128,6 +128,7 @@ public interface BBTypes {
 
   class Factory {
     public static PsiElement createElement(ASTNode node) {
+
       IElementType type = node.getElementType();
       if (type == ASSIGNMENT_STATEMENT) {
         return new BBAssignmentStatementImpl(node);

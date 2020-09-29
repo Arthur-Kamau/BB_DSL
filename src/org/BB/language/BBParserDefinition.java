@@ -52,6 +52,7 @@ public class BBParserDefinition implements ParserDefinition {
   @NotNull
   @Override
   public PsiParser createParser(final Project project) {
+
     return new BBParser();
   }
 

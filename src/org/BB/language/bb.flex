@@ -61,6 +61,8 @@ BIN_INTEGER_LITERAL = 0 [Bb] {DIGIT_OR_UNDERSCORE}*
   "catch" { return BBTypes.CATCH; }
   "char" { return BBTypes.CHAR; }
   "class" { return BBTypes.CLASS; }
+  "function" { return BBTypes.FUNCTION; }
+  "package" { return BBTypes.PACKAGE; }
 
   "continue" { return BBTypes.CONTINUE; }
   "default" { return BBTypes.DEFAULT; }
