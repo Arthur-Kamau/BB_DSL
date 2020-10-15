@@ -30,10 +30,15 @@ import com.intellij.pom.java.LanguageLevel;
 %eof}
 
 DIGIT = [0-9]
+IDENTIFIER = [A-Za-z0-9]
 DIGIT_OR_UNDERSCORE = [_0-9]
+CRLF=\R
+WHITE_SPACE=[\ \n\t\f]
+
+
 DIGITS = {DIGIT} | {DIGIT} {DIGIT_OR_UNDERSCORE}*
 HEX_DIGIT_OR_UNDERSCORE = [_0-9A-Fa-f]
-
+NEW_LINE =[\r\n]
 INTEGER_LITERAL = {DIGITS} | {HEX_INTEGER_LITERAL} | {BIN_INTEGER_LITERAL}
 LONG_LITERAL = {INTEGER_LITERAL} [Ll]
 HEX_INTEGER_LITERAL = 0 [Xx] {HEX_DIGIT_OR_UNDERSCORE}*
@@ -47,8 +52,7 @@ BIN_INTEGER_LITERAL = 0 [Bb] {DIGIT_OR_UNDERSCORE}*
 
 
 <YYINITIAL> {
-{LONG_LITERAL} { return BBTypes.LONG_LITERAL; }
- {INTEGER_LITERAL} { return BBTypes.INTEGER_LITERAL; }
+
 
   "true" { return BBTypes.TRUE; }
   "false" { return BBTypes.FALSE; }
@@ -140,6 +144,12 @@ BIN_INTEGER_LITERAL = 0 [Bb] {DIGIT_OR_UNDERSCORE}*
 
   "::" { return BBTypes.COLONCOLON; }
   "->" { return BBTypes.ARROW; }
+
+      {NEW_LINE} { return BBTypes.NEW_LINE; }
+      {IDENTIFIER} { return BBTypes.IDENTIFIER; }
+      {LONG_LITERAL} { return BBTypes.LONG_LITERAL; }
+       {INTEGER_LITERAL} { return BBTypes.INTEGER_LITERAL; }
+       {WHITE_SPACE} { return BBTypes.WHITE_SPACE; }
 }
 
 [^]  { return TokenType.BAD_CHARACTER; }

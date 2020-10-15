@@ -7,11 +7,19 @@ import com.intellij.psi.PsiElement;
 
 public class BBVisitor extends PsiElementVisitor {
 
+  public void visitAppClassDefinition(@NotNull BBAppClassDefinition o) {
+    visitPsiElement(o);
+  }
+
+  public void visitAppFunctionDefinition(@NotNull BBAppFunctionDefinition o) {
+    visitPsiElement(o);
+  }
+
   public void visitAssignmentStatement(@NotNull BBAssignmentStatement o) {
     visitPsiElement(o);
   }
 
-  public void visitDefinition(@NotNull BBDefinition o) {
+  public void visitClassDefinition(@NotNull BBClassDefinition o) {
     visitPsiElement(o);
   }
 
@@ -24,6 +32,22 @@ public class BBVisitor extends PsiElementVisitor {
   }
 
   public void visitFunctionInvocation(@NotNull BBFunctionInvocation o) {
+    visitPsiElement(o);
+  }
+
+  public void visitImportDeclarations(@NotNull BBImportDeclarations o) {
+    visitPsiElement(o);
+  }
+
+  public void visitImportStatement(@NotNull BBImportStatement o) {
+    visitPsiElement(o);
+  }
+
+  public void visitPackageDefinition(@NotNull BBPackageDefinition o) {
+    visitPsiElement(o);
+  }
+
+  public void visitSeparator(@NotNull BBSeparator o) {
     visitPsiElement(o);
   }
 

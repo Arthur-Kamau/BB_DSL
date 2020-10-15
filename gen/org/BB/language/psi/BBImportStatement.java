@@ -5,9 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface BBDefinition extends PsiElement {
+public interface BBImportStatement extends PsiElement {
 
   @NotNull
-  BBFunctionDefinition getFunctionDefinition();
+  List<BBImportDeclarations> getImportDeclarationsList();
 
 }

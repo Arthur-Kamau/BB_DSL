@@ -28,7 +28,7 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
-        <fileType name="BB File" implementationClass="org.BB.language.BBFileType" fieldName="INSTANCE"
+    <fileType name="BB File" implementationClass="org.BB.language.BBFileType" fieldName="INSTANCE"
               language="bb-lang" extensions="st" />
     <fileTypeFactory implementation="org.BB.language.BBFileTypeFactory"/>
     <lang.parserDefinition language="bb-lang" implementationClass="org.BB.language.BBParserDefinition"/>

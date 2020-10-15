@@ -139,9 +139,22 @@
   DOLLAR="$"
   ]
 }
-BBFile ::= Definition*
+BBFile ::= PackageDefinition | (ImportStatement)? |  AppFunctionDefinition*
 
-Definition ::= FunctionDefinition
+Separator  ::= ((WHITE_SPACE)*)?
+
+PackageDefinition ::= package Separator IDENTIFIER (';')? NEW_LINE
+
+ImportStatement ::= ImportDeclarations*
+
+ImportDeclarations ::= import Separator IDENTIFIER (';')? NEW_LINE
+
+AppClassDefinition ::= ClassDefinition
+
+AppFunctionDefinition ::= FunctionDefinition
+
+
+ClassDefinition ::= class Separator IDENTIFIER  ('(' ')')? '{' (FunctionBody | FunctionDefinition*)?  '}'
 
 FunctionDefinition ::= function IDENTIFIER '(' ')' (returns Type)? '{' FunctionBody '}'
 

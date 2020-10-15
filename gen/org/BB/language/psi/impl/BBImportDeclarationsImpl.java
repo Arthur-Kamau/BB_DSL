@@ -11,14 +11,14 @@ import static org.BB.language.BBTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import org.BB.language.psi.*;
 
-public class BBDefinitionImpl extends ASTWrapperPsiElement implements BBDefinition {
+public class BBImportDeclarationsImpl extends ASTWrapperPsiElement implements BBImportDeclarations {
 
-  public BBDefinitionImpl(@NotNull ASTNode node) {
+  public BBImportDeclarationsImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull BBVisitor visitor) {
-    visitor.visitDefinition(this);
+    visitor.visitImportDeclarations(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -28,8 +28,8 @@ public class BBDefinitionImpl extends ASTWrapperPsiElement implements BBDefiniti
 
   @Override
   @NotNull
-  public BBFunctionDefinition getFunctionDefinition() {
-    return findNotNullChildByClass(BBFunctionDefinition.class);
+  public BBSeparator getSeparator() {
+    return findNotNullChildByClass(BBSeparator.class);
   }
 
 }

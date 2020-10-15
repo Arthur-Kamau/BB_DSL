@@ -14,7 +14,7 @@ import com.intellij.psi.TokenType;
 import com.intellij.psi.tree.IFileElementType;
 import com.intellij.psi.tree.TokenSet;
 import org.BB.language.parser.BBParser;
-import org.BB.language.psi.BBTypes;
+//import org.BB.language.psi.BBTypes;
 import org.jetbrains.annotations.NotNull;
 
 public class BBParserDefinition implements ParserDefinition {

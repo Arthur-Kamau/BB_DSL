@@ -8,11 +8,17 @@ import org.BB.language.psi.impl.*;
 
 public interface BBTypes {
 
+  IElementType APP_CLASS_DEFINITION = new IElementType("APP_CLASS_DEFINITION", null);
+  IElementType APP_FUNCTION_DEFINITION = new IElementType("APP_FUNCTION_DEFINITION", null);
   IElementType ASSIGNMENT_STATEMENT = new IElementType("ASSIGNMENT_STATEMENT", null);
-  IElementType DEFINITION = new IElementType("DEFINITION", null);
+  IElementType CLASS_DEFINITION = new IElementType("CLASS_DEFINITION", null);
   IElementType FUNCTION_BODY = new IElementType("FUNCTION_BODY", null);
   IElementType FUNCTION_DEFINITION = new IElementType("FUNCTION_DEFINITION", null);
   IElementType FUNCTION_INVOCATION = new IElementType("FUNCTION_INVOCATION", null);
+  IElementType IMPORT_DECLARATIONS = new IElementType("IMPORT_DECLARATIONS", null);
+  IElementType IMPORT_STATEMENT = new IElementType("IMPORT_STATEMENT", null);
+  IElementType PACKAGE_DEFINITION = new IElementType("PACKAGE_DEFINITION", null);
+  IElementType SEPARATOR = new IElementType("SEPARATOR", null);
   IElementType STATEMENT = new IElementType("STATEMENT", null);
   IElementType TYPE = new IElementType("TYPE", null);
   IElementType VARIABLE_DEFINITION = new IElementType("VARIABLE_DEFINITION", null);
@@ -85,6 +91,7 @@ public interface BBTypes {
   IElementType NATIVE = new IElementType("native", null);
   IElementType NEQ = new IElementType("!=", null);
   IElementType NEW = new IElementType("new", null);
+  IElementType NEW_LINE = new IElementType("NEW_LINE", null);
   IElementType NOT = new IElementType("!", null);
   IElementType NULL = new IElementType("null", null);
   IElementType OF = new IElementType("of", null);
@@ -124,17 +131,23 @@ public interface BBTypes {
   IElementType VARIABLE = new IElementType("var", null);
   IElementType WHEN = new IElementType("when", null);
   IElementType WHERE = new IElementType("where", null);
+  IElementType WHITE_SPACE = new IElementType("WHITE_SPACE", null);
   IElementType YIELD = new IElementType("yield", null);
 
   class Factory {
     public static PsiElement createElement(ASTNode node) {
-
       IElementType type = node.getElementType();
-      if (type == ASSIGNMENT_STATEMENT) {
+      if (type == APP_CLASS_DEFINITION) {
+        return new BBAppClassDefinitionImpl(node);
+      }
+      else if (type == APP_FUNCTION_DEFINITION) {
+        return new BBAppFunctionDefinitionImpl(node);
+      }
+      else if (type == ASSIGNMENT_STATEMENT) {
         return new BBAssignmentStatementImpl(node);
       }
-      else if (type == DEFINITION) {
-        return new BBDefinitionImpl(node);
+      else if (type == CLASS_DEFINITION) {
+        return new BBClassDefinitionImpl(node);
       }
       else if (type == FUNCTION_BODY) {
         return new BBFunctionBodyImpl(node);
@@ -144,6 +157,18 @@ public interface BBTypes {
       }
       else if (type == FUNCTION_INVOCATION) {
         return new BBFunctionInvocationImpl(node);
+      }
+      else if (type == IMPORT_DECLARATIONS) {
+        return new BBImportDeclarationsImpl(node);
+      }
+      else if (type == IMPORT_STATEMENT) {
+        return new BBImportStatementImpl(node);
+      }
+      else if (type == PACKAGE_DEFINITION) {
+        return new BBPackageDefinitionImpl(node);
+      }
+      else if (type == SEPARATOR) {
+        return new BBSeparatorImpl(node);
       }
       else if (type == STATEMENT) {
         return new BBStatementImpl(node);
